@@ -9,4 +9,4 @@ var http = require('http');
     });
 
 server.listen(3000,'127.0.0.1');
-console.log('Now listeing yo port 3000');
+console.log('Now listening on port 3000');
