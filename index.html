@@ -34,6 +34,7 @@
             function disease() {
                 var disease = document.getElementById("dis").value;
 
+
                 if (disease == "diabetes" || disease == "Diabetes") {
                     count = count + 10;
                 } else if (disease == "cancer" || disease == "Cancer") {
@@ -67,13 +68,14 @@
                     count = count + 75;
                     // Hypertensive Crisis
                     //still messed up here
-                }   else if( diastolic >= 90 && diastolic <= 120){
+                }   else if (diastolic >= 90 && diastolic <= 120){
                     count = count + 75;
                 }   else if (systolic > 180) {
                     count = count + 100;
-                }   else if(diastolic > 120 ){
-
+                }   else if (diastolic > 120 ){
                     count = count + 100;
+                } else {
+                    alert("Need Blood Pressure")
                 }
             }
             // Body mass index category
@@ -94,6 +96,8 @@
                 } else if(BMI >= 30.0 && BMI <= 34.9){
                     window.alert("Obesity ")
                     count = count + 75;
+                } else {
+                    alert("Need BMI")
                 }
             }
             // Age category
@@ -106,10 +110,13 @@
                     count = count + 10;
                 } else if (clientAge < 60) {
                     count = count + 20;
-                } else {
+                } else if (clientAge >= 60) {
                     count = count + 30;
+                } else {
+                    alert("Need Age")
                 }
             }
+            //count for risk 
             function totalScore() {
                 if (count <= 20) {
                     window.alert("Low Risk");
