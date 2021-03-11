@@ -33,16 +33,18 @@
             // Disease category
             function disease() {
                 var disease = document.getElementById("dis").value;
-
+                
                 if (disease == "diabetes") {
-                    count = count + 10;
+                count = count + 10;
                 } else if (disease == "cancer") {
                     count = count + 10;
                 } else if (disease == "Alzheimers") {
                     count = count + 10;
-                } else {
+                } else if (disease == 'None') {
                     count = count + 0;
-                } 
+                } else {
+                    window.alert("Need disease")
+                }
             }
             // Blood pressure category
             function bloodPressure() {
@@ -63,10 +65,12 @@
                     count = count + 75;
                     // Hypertensive Crisis
                     //still messed up here
-                }   else if (systolic > 180 || systolic > 180 && diastolic > 120 || diastolic > 120) {
+                }   else if (systolic > 180 && diastolic > 120) {
                     count = count + 100;
-                //}   else if (systolic > 180 || diastolic > 120) {
-                    //count = count + 100;
+                }   else if (systolic > 180 || diastolic > 120) {
+                    count = count + 100;
+                } else if (systolic !== "" || diastolic != ""){
+                    alert("Need Both Systolic and Diastolic")
                 }
             }
             // Body mass index category
@@ -75,18 +79,15 @@
                 var clientHeightfeet = document.getElementById("bmi1").value;
                 var clientHeightinches = document.getElementById("bmi2").value;
                 var clientHeightinches = parseInt(clientHeightfeet * 12) + parseInt(clientHeightinches);
-                // document.write(clientHeightinches)
+
                 BMI = (clientLbs / (clientHeightinches*clientHeightinches)) * 703
-                // document.write(BMI)
+
                 if (BMI >= 18.5 && BMI <= 24.9) {
                     count = count + 0;
-                    document.write("Normal: ")
                 } else if (BMI >= 25.0 && BMI <= 29.9) {
                     count = count + 30;
-                    document.write("Over Weight: ")
                 } else if(BMI >= 30.0 && BMI <= 34.9){
                     count = count + 75;
-                    document.write("Obesity: ")
                 }
             }
             // Age category
@@ -106,16 +107,20 @@
             function totalScore() {
                 if (count <= 20) {
                     window.alert("Low Risk");
-                    window.alert(count)
+                    alert(count)
+                    count = 0;
                 } else if (count <= 50) {
                     window.alert("Moderate Risk");
                     alert(count)
+                    count = 0;
                 } else if (count <= 75) {
                     window.alert("High Risk");
                     alert(count)
+                    count = 0;
                 } else if (count > 75) {
                     window.alert("Uninsurable");
                     alert(count)
+                    count = 0;
                 }
             }
         </script> 
@@ -139,6 +144,5 @@
         <button type="button" onclick="bodyMassIndex(), totalScore()">Testing BMI</button><br>
         <button type="button" onclick="disease(), totalScore()">Testing Disease</button><br>
         <button type="button" onclick="disease(), ageClient(), bloodPressure(), bodyMassIndex(), totalScore()">Calculate Risk</button><br>
-        <p id="demo"></p>
     </body>
 </html>
