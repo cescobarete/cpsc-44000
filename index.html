@@ -52,39 +52,46 @@
             function bloodPressure() {
                 var systolic = document.getElementById("bpr").value;
                 var diastolic = document.getElementById("bpr2").value;
-
+                // Normal blood pressure    
                 if (systolic < 120 && diastolic < 80) {
                     count = count + 0;
-                } //else if (systolic > 120-129 && diastolic < 80) {
+                }   //else if (systolic > 120-129 && diastolic < 80) {
+                    // Elevated Blood Pressure
                     else if (systolic >= 120 && systolic <= 129 && diastolic < 80) {
                     count = count + 15;
-                } //else if (systolic > 130-139 && diastolic > 80-89) {
-                    else if (systolic >= 130 && systolic <= 139 && diastolic >= 80 && diastolic <= 89) {
+                }   //else if (systolic > 130-139 && diastolic > 80-89) {
+                    // Hypertension stage 1
+                    else if (systolic >= 130 && systolic <= 139 || diastolic >= 80 && diastolic <= 89) {
                     count = count + 30;
-                // Right here is where it does not work take a look
-                } else if (systolic >= 140 && systolic <= 180 || diastolic >= 90 && diastolic <= 120) {
-                    count = count + 75; //hypertension stage 2
-                } else if (systolic > 180 && diastolic > 120){
+                    // Right here is where it does not work take a look
+                    // Hypertension stage 2
+                }   else if (systolic >= 140 && systolic <= 180 || diastolic >= 90 && diastolic <= 120) {
+                    count = count + 75;
+                    // Hypertensive Crisis
+                }   else if (systolic > 180 && diastolic > 120) {
                     count = count + 100;
-                    document.write(" Hypertensive crisis1 "); //crisis and case
-                } else if (systolic > 180 || diastolic > 120) {
+                   // document.write(" Hypertensive crisis2 "); //crisis and case
+                }   else if (systolic > 180 || diastolic > 120) {
                     count = count + 100;
-                    document.write(" Hypertensive crisis2 "); //crisis or case
+                    // document.write(" Hypertensive crisis1 "); //crisis or case
                 }
             }
             // Body mass index category
             function bodyMassIndex() {
                 var clientLbs = document.getElementById("bmi").value;
-                var clientHeight = document.getElementById("bmi2").value;
-                // This does not work in general
-                BMI = clientLbs / (clientHeight*clientHeight)
-                if (BMI > 18.5-24.9) {
+                var clientHeightfeet = document.getElementById("bmi1").value;
+                var clientHeightinches = document.getElementById("bmi2").value;
+                var clientHeightinches = parseInt(clientHeightfeet * 12) + parseInt(clientHeightinches);
+                // document.write(clientHeightinches)
+                BMI = (clientLbs / (clientHeightinches*clientHeightinches)) * 703
+                // document.write(BMI)
+                if (BMI >= 18.5 && BMI <= 24.9) {
                     count = count + 0;
                     document.write("Normal: ")
-                } else if (BMI > 25.0-29.9) {
+                } else if (BMI >= 25.0 && BMI <= 29.9) {
                     count = count + 30;
                     document.write("Over Weight: ")
-                } else if(BMI >= 30.0-34.9){
+                } else if(BMI >= 30.0 && BMI <= 34.9){
                     count = count + 75;
                     document.write("Obesity: ")
                 }
@@ -114,7 +121,7 @@
                     document.write(" Moderate Risk <br>Points: ",count);
                 } else if (count <= 75) {
                     document.write("High Risk <br>Points: ",count);
-                } else {
+                } else if (count > 75) {
                     document.write("Uninsurable <br>Points: ",count);
                 }
             }
@@ -128,8 +135,9 @@
         <b>Clients disease: <input type='text' id="dis" value="" size="5"></b><br><br>
         <b>Clients systolic blood pressure: <input type='text' id="bpr" value="" size="5"></b><br><br>
         <b>Clients diastolic blood pressure: <input type='text' id="bpr2" value="" size="5"></b><br><br>
-        <b>Body mass index(kg): <input type='text' id="bmi" value="" size="5"></b><br><br>
-        <b>Height for BMI(m): <input type='text' id="bmi2" value="" size="5"></b><br><br>
+        <b>Body mass index(pound): <input type='text' id="bmi" value="" size="5"></b><br><br>
+        <b>Height for BMI(feet): <input type='text' id="bmi1" value="" size="5">
+        <b> inches: <input type='text' id="bmi2" value="" size="5"></b></b><br><br>
         <b>Clients age: <input type='text' id="dob" value="" size="5"></b><br><br>
         <!--Possibly limit the amount of buttons and link the functions into one and 
             have everything caluculate-->
