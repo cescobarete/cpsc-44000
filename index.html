@@ -52,7 +52,9 @@
                 var systolic = document.getElementById("bpr").value;
                 var diastolic = document.getElementById("bpr2").value;
                 // Normal blood pressure    
-                if (systolic < 120 && diastolic < 80) {
+                if (!(systolic && diastolic)) {
+                    alert("Need Blood Pressure")
+                } else if (systolic < 120 && diastolic < 80) {
                     count = count + 0;
                     // Elevated Blood Pressure
                 }   else if (systolic >= 120 && systolic <= 129 && diastolic < 80) {
@@ -83,8 +85,6 @@
                 }   else if (diastolic > 120 ){
                     count = count + 100;
 
-                } else {
-                    alert("Need Blood Pressure")
                 }
             }
             // Body mass index category
@@ -96,7 +96,9 @@
 
                 BMI = (clientLbs / (clientHeightinches*clientHeightinches)) * 703
 
-                if (BMI >= 18.5 && BMI <= 24.9) {
+                if (!(BMI)) {
+                    alert("Need BMI")
+                } else if (BMI >= 18.5 && BMI <= 24.9) {
                     window.alert("Normal")
                     count = count + 0;
                 } else if (BMI >= 25.0 && BMI <= 29.9) {
@@ -105,15 +107,14 @@
                 } else if(BMI >= 30.0 && BMI <= 34.9){
                     window.alert("Obesity ")
                     count = count + 75;
-                } else {
-                    alert("Need BMI")
                 }
             }
             // Age category
             function ageClient() {
                 var clientAge = document.getElementById("dob").value;
-
-                if (clientAge < 30) {
+                if (!(clientAge)) {
+                    alert("Need Age")
+                } else if (clientAge < 30) {
                     count = count + 0;
                 } else if (clientAge < 45) {
                     count = count + 10;
@@ -121,8 +122,6 @@
                     count = count + 20;
                 } else if (clientAge >= 60) {
                     count = count + 30;
-                } else {
-                    alert("Need Age")
                 }
             }
             //count for risk 
