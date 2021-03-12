@@ -145,6 +145,10 @@
                     count = 0;
                 }
             }
+            function closeWin() {
+                var myWindow = "https://riskcalc-cae2.azurewebsites.net/"
+                myWindow.close()
+            }
         </script> 
     </head>
     <body>
@@ -166,5 +170,6 @@
         <button type="button" onclick="bodyMassIndex(), totalScore()">Testing BMI</button><br>
         <button type="button" onclick="disease(), totalScore()">Testing Disease</button><br>
         <button type="button" onclick="disease(), ageClient(), bloodPressure(), bodyMassIndex(), totalScore()">Calculate Risk</button><br>
+        <button onclick="closeWin()">Close the window</button>
     </body>
 </html>
