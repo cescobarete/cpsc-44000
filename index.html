@@ -34,7 +34,9 @@
             function disease() {
                 var disease = document.getElementById("dis").value;
 
-                if (disease == "diabetes" || disease == "Diabetes") {
+                if (!(disease)) {
+                    alert("NOT ACCURATE: Give correct disease")
+                } else if (disease == "diabetes" || disease == "Diabetes") {
                     count = count + 10;
                 } else if (disease == "cancer" || disease == "Cancer") {
                     count = count + 10;
@@ -42,8 +44,6 @@
                     count = count + 10;
                 } else if (disease == 'None') {
                     count = count + 0;
-                } else {
-                    window.alert("Need disease")
                 }
             }
             // Blood pressure category
@@ -51,7 +51,7 @@
                 var systolic = document.getElementById("bpr").value;
                 var diastolic = document.getElementById("bpr2").value;
                 if (!(systolic && diastolic)) {
-                    alert("Need Blood Pressure")
+                    alert("NOT ACCURATE: Need Blood Pressure")
                     // Normal blood pressure    
                 } else if (systolic < 120 && diastolic < 80) {
                     count = count + 0;
@@ -64,7 +64,7 @@
                     count = count + 30;
                 }   else if (systolic >= 140 && systolic <= 180) {
                     count = count + 75;
-                }   else if (diastolic >= 90 && diastolic <= 120){//here
+                }   else if (diastolic >= 90 && diastolic <= 120){
                     count = count + 75;
                 }   else if (systolic > 180) {
                     count = count + 100;
@@ -82,7 +82,7 @@
                 BMI = (clientLbs / (clientHeightinches*clientHeightinches)) * 703
 
                 if (!(BMI)) {
-                    alert("Need BMI")
+                    alert("NOT ACCURATE: Need BMI")
                 } else if (BMI >= 18.5 && BMI <= 24.9) {
                     confirm("BMI = Normal")
                     count = count + 0;
@@ -98,7 +98,7 @@
             function ageClient() {
                 var clientAge = document.getElementById("dob").value;
                 if (!(clientAge)) {
-                    alert("Need Age")
+                    alert("NOT ACCURATE: Need Age")
                 } else if (clientAge < 30) {
                     count = count + 0;
                 } else if (clientAge < 45) {
@@ -138,10 +138,6 @@
                     count = 0;
                 }
             }
-            function closeWin() {
-                var myWindow = "https://riskcalc-cae2.azurewebsites.net/"
-                myWindow.close()
-            }
         </script> 
     </head>
     <body>
@@ -162,6 +158,6 @@
         <button type="button" onclick="bodyMassIndex(), totalScore()">Testing BMI</button><br>
         <button type="button" onclick="disease(), totalScore()">Testing Disease</button><br>
         <button type="button" onclick="disease(), ageClient(), bloodPressure(), bodyMassIndex(), totalScore()">Calculate Risk</button><br>
-        <button onclick="closeWin()">Close the window</button>
+        <a href="javascript:window.opener='x';window.close();">Close When Done</a>
     </body>
 </html>
