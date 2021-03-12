@@ -84,13 +84,13 @@
                 if (!(BMI)) {
                     alert("Need BMI")
                 } else if (BMI >= 18.5 && BMI <= 24.9) {
-                    confirm("Normal")
+                    confirm("BMI = Normal")
                     count = count + 0;
                 } else if (BMI >= 25.0 && BMI <= 29.9) {
-                    confirm("Over Weight ")
+                    confirm("BMI = Over Weight ")
                     count = count + 30;
                 } else if(BMI >= 30.0 && BMI <= 34.9){
-                    confirm("Obesity ")
+                    confirm("BMI = Obesity ")
                     count = count + 75;
                 }
             }
@@ -158,7 +158,7 @@
         <!--link the functions into one and 
             have everything caluculate-->
         <button type="button" onclick="ageClient(), totalScore()">Testing Age</button><br>
-        <button type="button" onclick="bloodPressure(), totalScore()">Tesing Pressure</button><br>
+        <button type="button" onclick="bloodPressure(), totalScore()">Testing Pressure</button><br>
         <button type="button" onclick="bodyMassIndex(), totalScore()">Testing BMI</button><br>
         <button type="button" onclick="disease(), totalScore()">Testing Disease</button><br>
         <button type="button" onclick="disease(), ageClient(), bloodPressure(), bodyMassIndex(), totalScore()">Calculate Risk</button><br>
